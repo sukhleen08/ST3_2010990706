@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url('testlivebg.jfif');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#img1{
+    width: 600px;
+    height: 500px;
+}
+#div2{
+    margin-top: 100 rem;
+    width: 600px;
+    height: 250px; 
+    border: 3px solid rgb(0, 98, 255);
+    background-color: rgb(0, 98, 255);
+    padding: 50px;
+    padding-left: 150px;
+}
+label{
+    font-size: 20px;
+    font-weight: bold;
+}
+#label1{
+    margin-left: 90px;
+}
+input{
+    width: 150px;
+    height: 25px;
+    border-radius: 4px;
+    box-shadow: 1px 2px rgb(0,0,0);
+    font-family: 'Oswald', sans-serif;
+}
+.input-box.success input {
+	border-color: #2ecc71;
+}
+.input-box.error input {
+	border-color: #e74c3c;
+    border-width:2px ;
+}
+small{
+    color: #e74c3c;
+	position: absolute;
+    top:48px;
+	bottom: 0;
+	left: 48px;
+	visibility: hidden;
+}
+button
+{
+    margin-top: 30px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+}
+button:hover{
+    cursor: pointer;
+}
+#div3{
+    display: flex;
+    margin-left: 825px;
+    position: absolute;
+    top: 100px;
+    font-size: 30px;
+    font-family: sans-serif;
+}
+#container{
+    background-color:#555555;
+    height:200px;
+    width:40%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    position: absolute;
+    top: 250px;
+    margin-left:750px; 
+   }
+.counter{
+    display:inline-block;
+    background-color:aliceblur;
+    width:15%;
+    max-width:80px;
+    height:80px;
+    margin:auto 10px;
+    box-shadow:0px 0px px white;
+    position:relative;
+    overflow:hidden;
+   }
+.counter p{
+    font-size:3rem;
+    text-align:center;
+    margin:0;
+    width:100%;
+    line-height:80px;
+    border-top:2px solid black;
+    background-color:aliceblue;
+   }
+p.next{
+    position:absolute;
+    top:80px;
+   }
+p.animate{
+    transition-duration:0.5s;
+    top:0px;
+   }
+#div4{
+    position: absolute;
+    top: 500px;
+    margin-left: 900px;
+}
+#div4 h3{
+    text-align: center;
+}
+span{
+    color:  rgb(0, 98, 255);
+    font-weight: 400;
+}

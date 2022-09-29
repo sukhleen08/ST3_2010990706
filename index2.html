@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body onload='startCounter()'>
+    <div>
+        <div id="div1"><img id="img1" src="testislive.jfif"/></div>
+        <div id="div2">
+            <form id="form">
+                <div id="input-box">
+                <label id="label1">NAME: </label>&nbsp;&nbsp;
+                <input type="text"  id="input1"/><br><br>
+                <small>Error message</small> 
+                </div>
+                <div id="input-box">
+                <label id="label2">ROLL NUMBER: </label>&nbsp;&nbsp;
+                <input type="number" id="input2"/>
+                <small>Error message</small> 
+                </div>
+                <div>
+                    <button type="submit">START TEST</button>
+                </div>
+            </form>
+           
+        </div>
+        <div id="div3">
+            <marquee><h1>TEST IS LIVE!!!</h1></marquee>
+        </div>
+        <div id="container">
+            <div class="counter" id="fifth">
+                <p class="current">0</p>
+                <p class="next">1</p>
+            </div>
+            <div class="counter" id="fourth">
+                <p class="current">0</p>
+                <p class="next">1</p>
+            </div>
+            <div class="counter" id="third">
+                <p class="current">0</p>
+                <p class="next">1</p>
+            </div>
+            <div class="counter" id="second">
+                <p class="current">0</p>
+                <p class="next">1</p>
+            </div>
+            <div class="counter" id="first">
+                <p class="current">0</p>
+                <p class="next">1</p>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const form=document.getElementById("form");
+        const name=document.getElementById("input1");
+        const rollno=document.getElementById("input2");
+
+        form.addEventListener('submit', e => {       
+        
+        checkInputs();
+		if(err==0){
+            window.open("index3.html");
+		}
+        else{
+            e.preventDefault();
+       }
+
+        
+    });
+    function checkInputs(){
+        const nameValue=name.value.trim();
+        const rollValue=rollno.value.trim();
+        err=0;
+        if(nameValue===''){
+            setErrorFor(name, 'Name can not be blank');
+        }
+        else{
+            setSuccessFor(name);
+        }
+        if(rollno===''){
+            setErrorFor(rollno, 'Roll number can not be blank');
+        }
+        else{
+            setSuccessFor(rollno);
+        }
+    }
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        formControl.className = 'input-box error';
+        small.innerText = message;
+        err=err+1;
+    }
+    function setSuccessFor(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'input-box success';
+    }
+    </script>
+    <script>
+        var countInterval;
+    
+    
+    function startCounter() {
+        
+        var number = 10;
+        
+        var currentNos = document.querySelectorAll(".counter .current");
+        var nextNos = document.querySelectorAll(".counter .next");
+        var count = 0;
+        
+        resetNumbers(currentNos, nextNos, 5);
+
+        clearInterval(countInterval);
+        
+        countInterval = setInterval(function() {
+            if(count === number) {
+                clearInterval(countInterval);
+                return;
+            }
+            increaseCount(currentNos, nextNos, 4);
+            count++;
+        }, 1000);
+    
+    }
+    
+    
+    function resetNumbers(currentNos, nextNos, end) {
+        for(var i=0; i<end; ++i) {
+            currentNos[i].innerText = 0;
+            nextNos[i].innerText = 1;
+        }
+    }
+    
+    
+    
+    function increaseCount(currentNos, nextNos, index) {
+        
+        let current = currentNos[index];
+        let next = nextNos[index];
+        
+        if(current.innerText == 9) {
+            increaseCount(currentNos, nextNos, index-1);
+        }
+        
+        next.classList.add("animate");
+        
+        setTimeout(function() {
+            current.innerText = next.innerText;
+            next.classList.remove("animate");
+            next.innerText = parseInt(next.innerText) + 1;
+            if(next.innerText > 9) {
+                next.innerText = 0;
+            }
+        }, 500);
+        
+    }
+        </script>
+    
+</body>
+</html>

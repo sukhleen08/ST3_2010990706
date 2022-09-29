@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="flex-container">
+        <div class="flex-child1">
+            <img src="onlineexam.jfif" id="img1"/>
+        </div>
+        <div class="wrapper flex-child2">
+            <h2>LOGIN</h2>
+            <form  id="form">
+                <div class="input-group">
+                      <div class="input-box">
+                        <h4>FIRST NAME</h4>
+                            <input type="text" placeholder="First Name"  class="name" id="fname">
+                            <i class="fa fa-user icon"></i>
+                            <i class="fas fa-check-circle h"></i>
+                            <i class="fas fa-exclamation-circle h"></i>
+                            <small>Error message</small>
+                      </div>
+                      <div class="input-box">
+                        <h4>LAST NAME</h4>
+                            <input type="text" placeholder="Last Name"  class="name" id="lname">
+                            <i class="fa fa-user icon"></i>
+                            <i class="fas fa-check-circle h"></i>
+                            <i class="fas fa-exclamation-circle h"></i>
+                            <small>Error message</small>  
+                      </div>
+                </div>
+                <div class="input-group">
+                      <div class="input-box">
+                        <h4>EMAIL</h4>
+                           <input type="email" placeholder="Email Adress"  class="name" id="email">
+                           <i class="fa fa-envelope icon"></i>
+                           <i class="fas fa-check-circle h"></i>
+                           <i class="fas fa-exclamation-circle h"></i>
+                           <small>Error message</small> 
+                      </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                      <h4>PHONE NUMBER</h4>
+                         <input type="number" placeholder="Phone Number"  class="name" id="phonenumber">
+                         <i class="fa fa-phone icon"></i>
+                         <i class="fas fa-check-circle h"></i>
+                         <i class="fas fa-exclamation-circle h"></i>
+                         <small>Error message</small> 
+                    </div>
+              </div>
+              <div class="input-group">
+                <div class="input-box">
+                  <h4>TEST PASSWORD</h4>
+                     <input type="password" placeholder="Password"  class="name" id="password">
+                     <i class="fa fa-lock icon"></i>
+                     <i class="fas fa-check-circle h"></i>
+                     <i class="fas fa-exclamation-circle h"></i>
+                     <small>Error message</small> 
+                </div>
+          </div>
+          <div class="input-group">
+            <div class="input-box">
+              <h4>LOCATION</h4>
+                 <input type="text" placeholder="Location"  class="name" id="location">
+                 <i class="fa fa-map-marker icon"></i>
+                 <i class="fas fa-check-circle h"></i>
+                 <i class="fas fa-exclamation-circle h"></i>
+                 <small>Error message</small> 
+            </div>
+      </div>
+                <div class="input-group">
+                      <div class="input-box">
+                        <h4>Date of Birth</h4>
+                            <input type="text" placeholder="DD" class="dob">
+                            <input type="text" placeholder="MM" class="dob">
+                            <input type="text" placeholder="YYYY" class="dob">
+                      </div>
+                      <div class="input-box">
+                          <h4>Gender</h4>
+                            <input type="radio" id="b1" name="gendar" checked class="radio">
+                            <label for="b1">Male</label>
+                            <input type="radio" id="b2" name="gendar" class="radio">
+                            <label for="b2">Female</label>
+                      </div>
+                </div>
+                <div class="input-group">
+                    <div class="input-box">
+                        <button type="submit">PROCEED</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="text/javascript">
+        const form = document.getElementById('form');
+        const fname = document.getElementById('fname');
+        const lname = document.getElementById('lname');
+        const email = document.getElementById('email');
+        const phone = document.getElementById('phonenumber');
+        const password = document.getElementById('password');
+        const confirmpassword = document.getElementById('location');
+        var err=0;
+    
+
+    form.addEventListener('submit', e => {       
+        
+        checkInputs();
+		if(err==0){
+            window.open("index2.html");
+		}
+        else{
+            e.preventDefault();
+       }
+
+        
+    });
+
+    function checkInputs() {
+        const fnameValue = lname.value.trim();
+        const lnameValue = lname.value.trim();
+        const emailValue = email.value.trim();
+        const phoneValue = phone.value.trim();
+        const passwordValue = password.value.trim();
+        const confirmpasswordValue = confirmpassword.value.trim();
+        err=0;
+        
+        if(fnameValue === '') {
+            setErrorFor(fname, 'first name cannot be blank');
+        } 
+		else{
+            setSuccessFor(fname);
+        }
+		
+        if(lnameValue === '') {
+            setErrorFor(lname, 'last name cannot be blank');
+        } 
+		else {
+            setSuccessFor(lname);
+        }
+        
+        if(emailValue === '') {
+            setErrorFor(email, 'Email cannot be blank');
+        } 
+		else if (!(/^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)$/.test(emailValue))){
+            setErrorFor(email, 'Not a valid email');
+        } 
+		else{
+            setSuccessFor(email);
+        }
+		
+        if(phoneValue === '') {
+            setErrorFor(phone, 'Phone number cannot be blank');
+        }  
+        else if (!(/^\+?([0-9]{2})\)?[-]?([0-9]{4})[-]?([0-9]{4})$/.test(phoneValue))) {
+            setErrorFor(phone, 'Please enter a valid phone number');
+        }
+		else {
+            setSuccessFor(phone);
+        }
+		
+        if(passwordValue === '') {
+            setErrorFor(password, 'Password cannot be blank');
+        }  
+		else {
+            setSuccessFor(password);
+        }
+		
+        if(confirmpasswordValue === '') {
+            setErrorFor(confirmpassword, 'Location cannot be blank');
+        } 
+        else if(confirmpasswordValue === passwordValue){
+            setSuccessFor(addrs);
+        }
+    }
+
+    function setErrorFor(input, message) {
+        const formControl = input.parentElement;
+        const small = formControl.querySelector('small');
+        formControl.className = 'input-box error';
+        small.innerText = message;
+        err=err+1;
+    }
+
+    function setSuccessFor(input) {
+        const formControl = input.parentElement;
+        formControl.className = 'input-box success';
+    }
+        
+    function isEmail(email) {
+       return /^(\w{1,})(@)([a-zA-Z]{1,})(.)(.com)$/.test(email);
+	}
+    addrs.addEventListener("focus",function(){
+        const formControl = addrs.parentElement;
+        const small = formControl.querySelector('small');
+        small.innerText = " ";
+    })
+
+    
+    </script>
+</body>
+</html>
